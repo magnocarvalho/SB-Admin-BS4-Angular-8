@@ -6,7 +6,7 @@
     "poletize-beta": {
       "hosting": {
         "test-ng7": [
-          "poletize-beta"
+          "poletize-admin"
         ]
       }
     }
