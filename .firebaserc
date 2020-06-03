@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "poletize-beta"
+  },
+  "targets": {
+    "poletize-beta": {
+      "hosting": {
+        "test-ng7": [
+          "poletize-beta"
+        ]
+      }
+    }
+  }
+}

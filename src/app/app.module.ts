@@ -10,6 +10,8 @@ import { LanguageTranslationModule } from './shared/modules/language-translation
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   declarations: [AppComponent],
   providers: [AuthGuard],
