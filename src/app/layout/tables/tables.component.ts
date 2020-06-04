@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { FbApiService } from '../../api/fb-api.service';
 
 @Component({
     selector: 'app-tables',
@@ -8,7 +9,15 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class TablesComponent implements OnInit {
-    constructor() {}
+    public clientes: Array<any> = [];
 
-    ngOnInit() {}
+    constructor(private api: FbApiService) {}
+
+    ngOnInit() {
+      this.api.getClientesAlex().subscribe((data) => {
+        this.clientes = data.map((e) => {
+          return { id: e.payload.doc.id, cliente: e.payload.doc.data() } as any;
+        });
+      });
+    }
 }

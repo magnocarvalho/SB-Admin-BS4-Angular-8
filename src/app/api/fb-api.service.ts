@@ -8,4 +8,7 @@ export class FbApiService {
   getClientes() {
     return this.firestore.collection('usuarios').snapshotChanges();
   }
+  getClientesAlex(){
+    return this.firestore.collection('alex').snapshotChanges();
+  }
 }
