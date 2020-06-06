@@ -8,6 +8,10 @@
             <i class="fa fa-fw fa-table"></i>&nbsp;
             <span>Site Alex</span>
         </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/forms']" class="list-group-item">
+            <i class="fa fa-fw fa-edit"></i>&nbsp;
+            <span>{{ 'Forms' | translate }}</span>
+        </a>
         <!-- <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/dashboard">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Dashboard' | translate }}</span>

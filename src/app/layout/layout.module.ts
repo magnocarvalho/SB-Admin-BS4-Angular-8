@@ -7,9 +7,17 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [CommonModule, LayoutRoutingModule, TranslateModule, NgbDropdownModule],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
+  imports: [
+    CommonModule,
+    LayoutRoutingModule,
+    TranslateModule,
+    NgbDropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
 })
 export class LayoutModule {}

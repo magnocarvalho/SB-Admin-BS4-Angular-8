@@ -1,8 +1,156 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header>
-
+  <app-page-header [heading]="'Nova Landpage'" [icon]="'fa-edit'"></app-page-header>
+  <form (ngSubmit)="onSubmit($event, formulario)" #formulario="ngForm" novalidate>
     <div class="row">
-        <div class="col-lg-6">
+      <div class="col-lg-6" style="text-transform: uppercase;">
+        <h5>Informações gerais</h5>
+        <hr />
+        <fieldset class="form-group">
+          <label>titulo do Site</label>
+          <input class="form-control" id="titulo" type="text" [(ngModel)]="site.infos.titulo" name="titulo" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>sobre</label>
+          <input class="form-control" id="about" type="text" [(ngModel)]="site.infos.sobre" name="sobre" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>email</label>
+          <input class="form-control" id="email" type="email" [(ngModel)]="site.infos.email" name="email" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>telefone</label>
+          <input class="form-control" id="telefone" type="tel" [(ngModel)]="site.infos.telefone" name="telefone" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>whatsapp numero</label>
+          <input
+            class="form-control"
+            id="whatsapp"
+            type="tel"
+            [(ngModel)]="site.redes_social.whatsapp"
+            name="whatsapp"
+          />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>candidato</label>
+          <input class="form-control" id="candidato" type="text" [(ngModel)]="site.infos.candidato" name="candidato" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>endereco completo</label>
+          <input class="form-control" id="endereco" type="text" [(ngModel)]="site.infos.endereco" name="endereco" />
+        </fieldset>
+      </div>
+      <div class="col-lg-6" style="text-transform: uppercase;">
+        <h5>Bibiografia</h5>
+        <hr />
+        <fieldset class="form-group">
+          <label>Texto biografia</label>
+          <textarea
+            class="form-control"
+            id="biografia"
+            type="text"
+            [(ngModel)]="site.biografia.biografia"
+            name="biografia"
+          ></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="exampleInputFilebiografia">Imagem Biografia</label>
+          <input
+            class="form-control-file"
+            id="capa_bigrafia"
+            accept="image/x-png,image/gif,image/jpeg"
+            type="file" (change)="onFileChange($event, 1)"
+            name="capa_bigrafia"
+          />
+          <img [src]="site.biografia.imagem_biografia" *ngIf="site.biografia.imagem_biografia" style="height: 300px; width:500px">
+        </fieldset>
+        <hr />
+        <h5>link e capas das Redes sociais</h5>
+        <hr />
+        <fieldset class="form-group">
+          <label>facebook</label>
+          <input
+            class="form-control"
+            id="facebook"
+            type="text"
+            [(ngModel)]="site.redes_social.facebook"
+            name="facebook"
+          />
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="exampleInputFileFacebook">Capa Facebook</label>
+          <input
+            class="form-control-file"
+            id="capa_facebook"
+            accept="image/x-png,image/gif,image/jpeg"
+            type="file"
+            [(ngModel)]="site.redes_social.capa_facebook"
+            name="capa_facebook"
+          />
+        </fieldset>
+        <hr />
+        <fieldset class="form-group">
+          <label>youtube</label>
+          <input class="form-control" id="youtube" type="text" [(ngModel)]="site.redes_social.youtube" name="youtube" />
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="exampleInputFileyoutube">Capa youtube</label>
+          <input
+            class="form-control-file"
+            id="capa_youtube"
+            accept="image/x-png,image/gif,image/jpeg"
+            type="file"
+            [(ngModel)]="site.redes_social.capa_youtube"
+            name="capa_youtube"
+          />
+        </fieldset>
+        <hr />
+        <fieldset class="form-group">
+          <label>twitter</label>
+          <input class="form-control" id="twitter" type="text" [(ngModel)]="site.redes_social.twitter" name="twitter" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="exampleInputFiletwitter">Capa twitter</label>
+          <input
+            class="form-control-file"
+            id="capa_twitter"
+            accept="image/x-png,image/gif,image/jpeg"
+            type="file"
+            [(ngModel)]="site.redes_social.capa_twitter"
+            name="capa_twitter"
+          />
+        </fieldset>
+        <hr />
+        <fieldset class="form-group">
+          <label>instagram</label>
+          <input
+            class="form-control"
+            id="instagram"
+            type="text"
+            [(ngModel)]="site.redes_social.instagram"
+            name="instagram"
+          />
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="exampleInputFileinstagram">Capa instagram</label>
+          <input
+            class="form-control-file"
+            id="capa_instagram"
+            accept="image/x-png,image/gif,image/jpeg"
+            type="file"
+            [(ngModel)]="site.redes_social.capa_instagram"
+            name="capa_instagram"
+          />
+        </fieldset>
+      </div>
+      <div class="col-lg-6">
+        <button type="submit">
+          Save
+        </button>
+      </div>
+      <!-- <div class="col-lg-6">
             <form role="form">
                 <fieldset class="form-group">
                     <label>Text Input</label>
@@ -174,7 +322,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@</span>
                     </div>
-                    <!-- <span class="input-group-addon">@</span> -->
+                    <span class="input-group-addon">@</span>
                     <input class="form-control" placeholder="Username" type="text" />
                 </div>
 
@@ -216,7 +364,8 @@
                     >Bootstrap's Form Documentation</a
                 >.
             </p>
-        </div>
+        </div> -->
     </div>
     <!-- /.row -->
+  </form>
 </div>
