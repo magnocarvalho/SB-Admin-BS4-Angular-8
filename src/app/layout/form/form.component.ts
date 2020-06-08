@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { FbApiService } from '../../api/fb-api.service';
-
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -11,6 +11,7 @@ import { FbApiService } from '../../api/fb-api.service';
 export class FormComponent implements OnInit {
   constructor(public api: FbApiService) {}
   site = {
+    id: '',
     infos: { titulo: '', sobre: '', email: '', candidato: '', telefone: '', endereco: '', logo_site: '' },
     redes_social: {
       facebook: '',
@@ -29,7 +30,7 @@ export class FormComponent implements OnInit {
       cor_texto: '',
       cor_versu: ''
     },
-    biografia: { biografia: '', imagem_biografia: '' },
+    biografia: { biografia: '', imagem_biografia: '', texto_pagina: '' },
     atuacao: { emendas: '', projetos: '', comissoes: '', noticias: '' },
     podcasts: {
       spotify: '',
@@ -38,18 +39,74 @@ export class FormComponent implements OnInit {
       deezer: ''
     }
   };
-  imagens = {
-    capa_facebook: '',
-    capa_twitter: '',
-    capa_instagram: '',
-    capa_youtube: '',
-    imagem_biografia: ''
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' }
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote'
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1'
+      }
+    ],
+    uploadUrl: 'v1/image',
+    uploadWithCredentials: false,
+    sanitize: true,
+    toolbarPosition: 'top',
+    toolbarHiddenButtons: [
+      ['bold', 'italic'],
+      [
+        'insertImage',
+        'insertVideo',
+        'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+
+        'insertImage',
+        'insertVideo',
+        'insertHorizontalRule',
+
+        'toggleEditorMode'
+      ]
+    ]
   };
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.api.getAlexPager().subscribe((data) => {
+      this.site = data.payload.data() as any;
+    });
+  }
 
   onSubmit($event, formulario) {
-    console.log({ $event, formulario, site: this.site });
+    // console.log({ $event, formulario, site: this.site });
+    this.api.updateSiteAlex(this.site);
   }
   onFileChange(event, option) {
     const reader = new FileReader();

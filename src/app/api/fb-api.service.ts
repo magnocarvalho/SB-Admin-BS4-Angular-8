@@ -8,7 +8,20 @@ export class FbApiService {
   getClientes() {
     return this.firestore.collection('usuarios').snapshotChanges();
   }
-  getClientesAlex(){
+  getClientesAlex() {
     return this.firestore.collection('alex').snapshotChanges();
+  }
+  createSiteAlex(infos) {
+    return this.firestore.collection('landpages').add(infos);
+  }
+  updateSiteAlex(infos) {
+    delete infos.id;
+    this.firestore.doc('landpages/' + 'LzmwlMqI4fSoNtgcUrfm').update(infos);
+  }
+  getPages() {
+    return this.firestore.collection('landpages').snapshotChanges();
+  }
+  getAlexPager() {
+    return this.firestore.doc('landpages/' + 'LzmwlMqI4fSoNtgcUrfm').snapshotChanges();
   }
 }

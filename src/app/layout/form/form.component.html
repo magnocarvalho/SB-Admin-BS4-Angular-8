@@ -188,6 +188,19 @@
         </fieldset>
       </div>
       <div class="col-lg-6">
+        <hr />
+        <h5>Biografia do Candidato</h5>
+        <hr />
+        <fieldset class="form-group">
+          <label>Texto da pagina sobre o candidato</label>
+          <angular-editor [config]="editorConfig"
+            [placeholder]="'Texto da pagina da biografia do candidato'"
+            [(ngModel)]="site.biografia.texto_pagina"
+            name="biografia_texto"
+          ></angular-editor>
+        </fieldset>
+      </div>
+      <div class="col-lg-6">
         <button type="submit">
           Save
         </button>

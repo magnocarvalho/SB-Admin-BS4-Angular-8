@@ -12,7 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   imports: [
@@ -26,7 +26,8 @@ import { environment } from '../environments/environment';
     ReactiveFormsModule,
     NgbModule,
     ToastrModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularEditorModule
   ],
   declarations: [AppComponent],
   providers: [AuthGuard],
