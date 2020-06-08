@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { FbApiService } from '../../api/fb-api.service';
 
 @Component({
   selector: 'app-form',
@@ -8,9 +9,9 @@ import { routerTransition } from '../../router.animations';
   animations: [routerTransition()]
 })
 export class FormComponent implements OnInit {
-  constructor() {}
+  constructor(public api: FbApiService) {}
   site = {
-    infos: { titulo: '', sobre: '', email: '', candidato: '', telefone: '', endereco: '' },
+    infos: { titulo: '', sobre: '', email: '', candidato: '', telefone: '', endereco: '', logo_site: '' },
     redes_social: {
       facebook: '',
       twitter: '',
@@ -61,9 +62,22 @@ export class FormComponent implements OnInit {
         switch (option) {
           case 1:
             this.site.biografia.imagem_biografia = reader.result as string;
-            this.imagens.imagem_biografia = reader.result as string;
             break;
-        
+          case 2:
+            this.site.redes_social.capa_facebook = reader.result as string;
+            break;
+          case 3:
+            this.site.redes_social.capa_instagram = reader.result as string;
+            break;
+          case 4:
+            this.site.redes_social.capa_twitter = reader.result as string;
+            break;
+          case 5:
+            this.site.redes_social.capa_youtube = reader.result as string;
+            break;
+          case 6:
+            this.site.infos.logo_site = reader.result as string;
+            break;
           default:
             break;
         }

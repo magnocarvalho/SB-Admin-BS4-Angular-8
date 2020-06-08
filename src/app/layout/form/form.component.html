@@ -10,6 +10,22 @@
           <input class="form-control" id="titulo" type="text" [(ngModel)]="site.infos.titulo" name="titulo" />
         </fieldset>
         <fieldset class="form-group">
+          <label for="exampleInputFileinstagram">Logo SITE</label>
+          <input
+            class="form-control-file"
+            id="logo_site"
+            accept="image/x-png,image/gif,image/jpeg"
+            type="file"
+            (change)="onFileChange($event, 6)"
+            name="logo_dite"
+          />
+          <img
+            [src]="site.infos.logo_site"
+            *ngIf="site.infos.logo_site"
+            style="height: 100%; width: 100%; max-width: 250px;"
+          />
+        </fieldset>
+        <fieldset class="form-group">
           <label>sobre</label>
           <input class="form-control" id="about" type="text" [(ngModel)]="site.infos.sobre" name="sobre" />
         </fieldset>
@@ -59,10 +75,15 @@
             class="form-control-file"
             id="capa_bigrafia"
             accept="image/x-png,image/gif,image/jpeg"
-            type="file" (change)="onFileChange($event, 1)"
+            type="file"
+            (change)="onFileChange($event, 1)"
             name="capa_bigrafia"
           />
-          <img [src]="site.biografia.imagem_biografia" *ngIf="site.biografia.imagem_biografia" style="height: 300px; width:500px">
+          <img
+            [src]="site.biografia.imagem_biografia"
+            *ngIf="site.biografia.imagem_biografia"
+            style="height: 100%; width: 100%; max-width: 250px;"
+          />
         </fieldset>
         <hr />
         <h5>link e capas das Redes sociais</h5>
@@ -85,8 +106,13 @@
             id="capa_facebook"
             accept="image/x-png,image/gif,image/jpeg"
             type="file"
-            [(ngModel)]="site.redes_social.capa_facebook"
+            (change)="onFileChange($event, 2)"
             name="capa_facebook"
+          />
+          <img
+            [src]="site.redes_social.capa_facebook"
+            *ngIf="site.redes_social.capa_facebook"
+            style="height: 100%; width: 100%; max-width: 250px;"
           />
         </fieldset>
         <hr />
@@ -102,8 +128,14 @@
             id="capa_youtube"
             accept="image/x-png,image/gif,image/jpeg"
             type="file"
-            [(ngModel)]="site.redes_social.capa_youtube"
+            type="file"
+            (change)="onFileChange($event, 5)"
             name="capa_youtube"
+          />
+          <img
+            [src]="site.redes_social.capa_youtube"
+            *ngIf="site.redes_social.capa_youtube"
+            style="height: 100%; width: 100%; max-width: 250px;"
           />
         </fieldset>
         <hr />
@@ -118,13 +150,18 @@
             id="capa_twitter"
             accept="image/x-png,image/gif,image/jpeg"
             type="file"
-            [(ngModel)]="site.redes_social.capa_twitter"
             name="capa_twitter"
+            (change)="onFileChange($event, 4)"
+          />
+          <img
+            [src]="site.redes_social.capa_twitter"
+            *ngIf="site.redes_social.capa_twitter"
+            style="height: 100%; width: 100%; max-width: 250px;"
           />
         </fieldset>
         <hr />
         <fieldset class="form-group">
-          <label>instagram</label>
+          <label>Instagram</label>
           <input
             class="form-control"
             id="instagram"
@@ -140,8 +177,13 @@
             id="capa_instagram"
             accept="image/x-png,image/gif,image/jpeg"
             type="file"
-            [(ngModel)]="site.redes_social.capa_instagram"
+            (change)="onFileChange($event, 3)"
             name="capa_instagram"
+          />
+          <img
+            [src]="site.redes_social.capa_instagram"
+            *ngIf="site.redes_social.capa_instagram"
+            style="height: 100%; width: 100%; max-width: 250px;"
           />
         </fieldset>
       </div>
