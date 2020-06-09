@@ -55,6 +55,37 @@
           <label>endereco completo</label>
           <input class="form-control" id="endereco" type="text" [(ngModel)]="site.infos.endereco" name="endereco" />
         </fieldset>
+        <hr />
+        <h5>Links da Atuação</h5>
+        <hr />
+        <fieldset class="form-group">
+          <label>comissao</label>
+          <input class="form-control" id="comissao" type="text" [(ngModel)]="site.atuacao.comissoes" name="comissao" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>emendas</label>
+          <input class="form-control" id="emendas" type="text" [(ngModel)]="site.atuacao.emendas" name="emendas" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>noticias</label>
+          <input class="form-control" id="noticias" type="text" [(ngModel)]="site.atuacao.noticias" name="noticias" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>projetos</label>
+          <input class="form-control" id="projetos" type="text" [(ngModel)]="site.atuacao.projetos" name="projetos" />
+        </fieldset>
+        <hr />
+        <h5>Biografia do Candidato</h5>
+        <hr />
+        <fieldset class="form-group">
+          <label>Texto da pagina sobre o candidato</label>
+          <angular-editor
+            [config]="editorConfig"
+            [placeholder]="'Texto da pagina da biografia do candidato'"
+            [(ngModel)]="site.biografia.texto_pagina"
+            name="biografia_texto"
+          ></angular-editor>
+        </fieldset>
       </div>
       <div class="col-lg-6" style="text-transform: uppercase;">
         <h5>Bibiografia</h5>
@@ -128,7 +159,6 @@
             id="capa_youtube"
             accept="image/x-png,image/gif,image/jpeg"
             type="file"
-            type="file"
             (change)="onFileChange($event, 5)"
             name="capa_youtube"
           />
@@ -188,20 +218,7 @@
         </fieldset>
       </div>
       <div class="col-lg-6">
-        <hr />
-        <h5>Biografia do Candidato</h5>
-        <hr />
-        <fieldset class="form-group">
-          <label>Texto da pagina sobre o candidato</label>
-          <angular-editor [config]="editorConfig"
-            [placeholder]="'Texto da pagina da biografia do candidato'"
-            [(ngModel)]="site.biografia.texto_pagina"
-            name="biografia_texto"
-          ></angular-editor>
-        </fieldset>
-      </div>
-      <div class="col-lg-6">
-        <button type="submit">
+        <button type="submit" class="btn btn-primary">
           Save
         </button>
       </div>
