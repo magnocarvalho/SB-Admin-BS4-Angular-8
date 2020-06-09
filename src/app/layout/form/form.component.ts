@@ -88,11 +88,9 @@ export class FormComponent implements OnInit {
         'textColor',
         'backgroundColor',
         'customClasses',
-
         'insertImage',
         'insertVideo',
         'insertHorizontalRule',
-
         'toggleEditorMode'
       ]
     ]

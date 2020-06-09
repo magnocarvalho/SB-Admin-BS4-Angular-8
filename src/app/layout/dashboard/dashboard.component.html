@@ -1,29 +1,31 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">Leads <small></small></h2>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th>Email</th>
-                        <th>Cargo</th>
-                        <th>Data</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let c of clientes">
-                        <td scope="row">{{c.cliente.nome}}</td>
-                        <td>{{c.cliente.telefone}}</td>
-                        <td>{{c.cliente.email}}</td>
-                        <td>{{c.cliente.cargo == 2 ? "Assessor" : "Político"}}</td>
-                        <td>{{c.cliente.createat.toDate()| date}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+  <h2 class="text-muted">Leads <small></small></h2>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-primary" (click)="generaterExcel()">Gerar Excel</button>
     </div>
-    <hr />
-
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Cargo</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of clientes">
+            <td scope="row">{{ c.cliente.nome }}</td>
+            <td>{{ c.cliente.telefone }}</td>
+            <td>{{ c.cliente.email }}</td>
+            <td>{{ c.cliente.cargo == 2 ? 'Assessor' : 'Político' }}</td>
+            <td>{{ c.cliente.createat.toDate() | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr />
 </div>

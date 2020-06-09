@@ -13,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { ExcelService } from './api/excel.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     AngularEditorModule
   ],
   declarations: [AppComponent],
-  providers: [AuthGuard],
+  providers: [AuthGuard, ExcelService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
