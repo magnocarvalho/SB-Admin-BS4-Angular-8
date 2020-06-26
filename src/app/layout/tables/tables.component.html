@@ -1,35 +1,35 @@
 <div [@routerTransition]>
-  <app-page-header [heading]="'Site Alex'" [icon]="'fa-table'"></app-page-header>
-  <div class="row">
-    <div class="col-md-12">
-      <button type="button" class="btn btn-primary" (click)="generaterExcel()">Gerar Excel</button>
+    <app-page-header [heading]="'Site Alex'" [icon]="'fa-table'"></app-page-header>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary" (click)="generaterExcel()">Gerar Excel</button>
+        </div>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Cidade</th>
+                        <th>Data</th>
+                        <th>Tipo</th>
+                        <th>Mensagem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of clientes">
+                        <td scope="row">{{ c.cliente.nome }}</td>
+                        <td>{{ c.cliente.telefone }}</td>
+                        <td>{{ c.cliente.email }}</td>
+                        <td>{{ c.cliente.cidade }}</td>
+                        <td>{{ c.cliente.dataReivindicacao.toDate() | date }}</td>
+                        <td>{{ tipoDeContato(c.cliente.tipo) }}</td>
+                        <td>{{ c.cliente.descricao }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="col-md-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th>Cidade</th>
-            <th>Data</th>
-            <th>Tipo</th>
-            <th>Mensagem</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let c of clientes">
-            <td scope="row">{{ c.cliente.nome }}</td>
-            <td>{{ c.cliente.telefone }}</td>
-            <td>{{ c.cliente.email }}</td>
-            <td>{{ c.cliente.cidade }}</td>
-            <td>{{ c.cliente.dataReivindicacao.toDate() | date }}</td>
-            <td>Contato Site</td>
-            <td>{{ c.cliente.descricao }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <hr />
+    <hr />
 </div>
