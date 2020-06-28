@@ -24,4 +24,7 @@ export class FbApiService {
   getAlexPager() {
     return this.firestore.doc('landpages/' + 'LzmwlMqI4fSoNtgcUrfm').snapshotChanges();
   }
+  deleteAlex(id){
+      return this.firestore.doc('alex/' + id).delete();
+  }
 }

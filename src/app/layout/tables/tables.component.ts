@@ -28,7 +28,7 @@ export class TablesComponent implements OnInit {
     generaterExcel() {
         this.export_clientes.forEach((e) => {
             e.dataReivindicacao = new Date(e.dataReivindicacao.toDate());
-            e.tipo = this.tipoDeContato(e.tipo)
+            e.tipo = this.tipoDeContato(e.tipo);
             return e;
         });
         debugger;
@@ -48,6 +48,19 @@ export class TablesComponent implements OnInit {
                 return 'Contato';
             case 6:
                 return 'Solicitação';
+        }
+    }
+    apagarLead(id) {
+        if (confirm('Deseja realmente deseja apagar esse lead?')) {
+            this.api
+                .deleteAlex(id)
+                .then((res) => {
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+                .finally(() => {});
         }
     }
 }
